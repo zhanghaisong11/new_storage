@@ -35,8 +35,5 @@ var user = storage.get('user');
 // >{ name: 'marcus', likes: 'javascript' }
 
 
-//获取storage存储数据的length
-storage.length();
-
 
 ```
