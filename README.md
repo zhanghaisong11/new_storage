@@ -47,5 +47,6 @@ storage.get('user');
 
 //获取所有的storage存储的数据
 storage.getAll();
+//->[{key:"username",value:"zhang"},{key:user,value:{ name: 'zhang', likes: 'javascript' }}....]
 
 ```
