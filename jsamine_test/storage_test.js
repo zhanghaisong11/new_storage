@@ -66,26 +66,30 @@ describe("测试storage", function () {
         expect(tsetStorage.length()).toBe(10);
     });
 
-
-
-//    describe("测试超时", function() {
-//        beforeEach(function() {
-//            jasmine.DEFAULT_TIMEOUT_INTERVAL = 6000;
-//        });
-//        it("测试超时", function(done) {
-//            setTimeout(function() {
-//                expect(tsetStorage.get("fildeTestTimeout")).toBe(null);
-//                done();
-//            }, 5000);
-//        });
-//
-//        it("测试无超时数据", function(done) {
-//            setTimeout(function() {
-//                var notHaveExpDataInfo = new Storage("notHaveExpDataInfo");
-//                expect(notHaveExpDataInfo.get("fildeTestNotTimeout")).toBe("notTimeout");
-//                done();
-//            }, 5000);
-//        });
+//    it("测试获取所有数据", function () {
+//        expect(tsetStorage.getAll()).toBe();
 //    });
+
+
+
+    describe("测试超时", function() {
+        beforeEach(function() {
+            jasmine.DEFAULT_TIMEOUT_INTERVAL = 6000;
+        });
+        it("测试超时", function(done) {
+            setTimeout(function() {
+                expect(tsetStorage.get("fildeTestTimeout")).toBe(null);
+                done();
+            }, 5000);
+        });
+
+        it("测试无超时数据", function(done) {
+            setTimeout(function() {
+                var notHaveExpDataInfo = new Storage("notHaveExpDataInfo");
+                expect(notHaveExpDataInfo.get("fildeTestNotTimeout")).toBe("notTimeout");
+                done();
+            }, 5000);
+        });
+    });
 
 });

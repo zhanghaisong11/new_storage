@@ -57,7 +57,8 @@
             for (var i = 0; i < length; i++) {
                 if (this.storage.key(i).indexOf(this.nameSpeace) != -1) {
                     var dataCache = this.storage.getItem(this.storage.key(i));
-                    allData.push(this.dataReduction(dataCache).val);
+                    var data = {key:this.storage.key(i).replace(this.nameSpeace,""),value:this.dataReduction(dataCache).val};
+                    allData.push(data);
                 }
             }
             return allData;
