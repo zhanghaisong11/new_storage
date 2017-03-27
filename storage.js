@@ -24,11 +24,33 @@
             this.storage.clear();
         };
 
+        store.prototype.getAll = function(){
+            var keys = getAllKey(this.nameSpeace);
+            var allData = [];
+            for (var i = 0; i < keys.length; i++) {
+                var data = {key:keys[i],value:this.get(keys[i])};
+                allData.push(data);
+            }
+            return allData;
+        };
+
+        function getAllKey(namespace) {
+            var length = window.localStorage.length;
+            var allKeys = [];
+            for (var i = 0; i < length; i++) {
+                var key = window.localStorage.key(i);
+                if(key.indexOf(namespace) !=-1){
+                    allKeys.push(key.replace(namespace,""));
+                }
+            }
+            return allKeys;
+        }
+
         function dataReduction(infoCache) {       //还原数据
             return JSON.parse(infoCache);
         }
 
-        function  initData (val, exp) {            //处理数据，转为json
+        function initData(val, exp) {            //处理数据，转为json
             var dataInfo = {val: val};
             if (exp) {
                 dataInfo = {val: val, exp: exp, time: new Date().getTime()};
@@ -36,7 +58,7 @@
             return JSON.stringify(dataInfo);
         }
 
-        function checkExpired (infoCache) {        //检查过期数据
+        function checkExpired(infoCache) {        //检查过期数据
             var info = dataReduction(infoCache);
             if (info.exp && new Date().getTime() - info.time > info.exp) {
                 return null;

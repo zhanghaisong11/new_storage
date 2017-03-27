@@ -35,5 +35,7 @@ var user = storage.get('user');
 // >{ name: 'marcus', likes: 'javascript' }
 
 
+//获取所有的storage存储的数据
+storage.getAll();
 
 ```

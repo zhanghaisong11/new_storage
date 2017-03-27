@@ -61,6 +61,10 @@ describe("测试storage", function () {
         expect(notHaveExpDataInfo.get("fildeTestNotTimeout")).toBe("notTimeout");
     });
 
+    it("测试获取所有数据", function () {
+        expect(typeof  tsetStorage.getAll()).toBe("object");
+    });
+
 
     describe("测试超时", function() {
         beforeEach(function() {
