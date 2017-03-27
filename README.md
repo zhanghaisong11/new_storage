@@ -1,14 +1,9 @@
 # new_storage
 
-# 使用
+# 引用
 
 ```html
-<script type="text/javascript" src="dist/store.js"></script>
-<script type="text/javascript">
-months ago @jaywcjlove update README.md
-store("test","tank")
-months ago @jaywcjlove update README.md
-</script>
+<script type="text/javascript" src="storage.js"></script>
 ```
 
 #本地存储API调用示例
