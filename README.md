@@ -27,9 +27,6 @@ storage.remove('username');
 // 清除所有本地存储
 storage.clear();
 
-//获取本地存储 length
-storage.length();
-
 // 存储对象
 storage.set('user', { name: 'zhang', likes: 'javascript' });
 

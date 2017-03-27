@@ -45,12 +45,6 @@
             this.storage.clear();
         };
 
-
-        store.prototype.length = function () {
-            var data = this.getAll();
-            return data.length;
-        };
-
     } else {
         throw 'The browser does not support local storage';
     }

@@ -61,9 +61,6 @@ describe("测试storage", function () {
         expect(notHaveExpDataInfo.get("fildeTestNotTimeout")).toBe("notTimeout");
     });
 
-    it("测试获取localstorage的length", function () {
-        expect(tsetStorage.length()).toBe(10);
-    });
 
     describe("测试超时", function() {
         beforeEach(function() {
