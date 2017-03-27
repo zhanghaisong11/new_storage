@@ -3,21 +3,8 @@
 
         store.prototype.storage = window.localStorage;
 
-        store.prototype.initData = function (val, exp) {            //处理数据，转为json
-            var dataInfo = {val: val};
-            if (exp) {
-                dataInfo = {val: val, exp: exp, time: new Date().getTime()};
-            }
-            return JSON.stringify(dataInfo);
-        };
-
-        store.prototype.dataReduction = function (infoCache) {       //还原数据
-            return JSON.parse(infoCache);
-        };
-
-
         store.prototype.set = function (key, val, exp) {             //存储数据
-            var valInfo = this.initData(val, exp);
+            var valInfo = initData(val, exp);
             this.storage.setItem(this.nameSpeace + key, valInfo)
         };
 
@@ -26,15 +13,7 @@
             if (!infoCache) {
                 return null;
             }
-            return this.checkExpired(infoCache);
-        };
-
-        store.prototype.checkExpired = function (infoCache) {        //检查过期数据
-            var info = this.dataReduction(infoCache);
-            if (info.exp && new Date().getTime() - info.time > info.exp) {
-                return null;
-            }
-            return info.val
+            return checkExpired(infoCache);
         };
 
         store.prototype.remove = function (key) {                    //删除数据
@@ -44,6 +23,26 @@
         store.prototype.clear = function () {
             this.storage.clear();
         };
+
+        function dataReduction(infoCache) {       //还原数据
+            return JSON.parse(infoCache);
+        }
+
+        function  initData (val, exp) {            //处理数据，转为json
+            var dataInfo = {val: val};
+            if (exp) {
+                dataInfo = {val: val, exp: exp, time: new Date().getTime()};
+            }
+            return JSON.stringify(dataInfo);
+        }
+
+        function checkExpired (infoCache) {        //检查过期数据
+            var info = dataReduction(infoCache);
+            if (info.exp && new Date().getTime() - info.time > info.exp) {
+                return null;
+            }
+            return info.val
+        }
 
     } else {
         throw 'The browser does not support local storage';
