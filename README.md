@@ -34,7 +34,7 @@ storage.length();
 storage.set('user', { name: 'zhang', likes: 'javascript' });
 
 // 获取存储的对象
-var user = store.get('user');
+var user = storage.get('user');
 // >{ name: 'marcus', likes: 'javascript' }
 
 
