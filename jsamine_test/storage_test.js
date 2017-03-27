@@ -18,7 +18,7 @@ describe("测试storage", function () {
     });
 
     it("测试存取数组", function () {
-        tsetStorage.set("fildeTestArray", [1,2]);
+        tsetStorage.set("fildeTestArray", [1, 2]);
         expect(tsetStorage.get("fildeTestArray").length).toBe(2);
         expect(tsetStorage.get("fildeTestArray")[0]).toBe(1);
     });
@@ -43,7 +43,6 @@ describe("测试storage", function () {
     });
 
 
-
     it("测试删除", function () {
         tsetStorage.set("fildeTestDelete", 'delete');
         expect(tsetStorage.get("fildeTestDelete")).toBe("delete");
@@ -52,7 +51,7 @@ describe("测试storage", function () {
     });
 
     it("测试过期之前", function () {
-        tsetStorage.set("fildeTestTimeout", 'timeout',2000);
+        tsetStorage.set("fildeTestTimeout", 'timeout', 2000);
         expect(tsetStorage.get("fildeTestTimeout")).toBe("timeout");
     });
 
@@ -65,11 +64,17 @@ describe("测试storage", function () {
     it("测试获取localstorage的length", function () {
         expect(tsetStorage.length()).toBe(10);
     });
-
+//
 //    it("测试获取所有数据", function () {
-//        expect(tsetStorage.getAll()).toBe();
+//        tsetStorage.clear();
+//        tsetStorage.set("data_first","test_first");
+//        tsetStorage.set("data_second","test_second");
+//        var data = [
+//            { key: 'data_first', value: 'test_first'},
+//            { key: 'data_second', value:  "test_second"},
+//        ];
+//        expect(tsetStorage.getAll()).toBe(data);
 //    });
-
 
 
     describe("测试超时", function() {

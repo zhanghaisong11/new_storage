@@ -42,12 +42,7 @@
         };
 
         Storage.prototype.clear = function () {
-            var length = this.storage.length;
-            for (var i = 0; i < length; i++) {
-                if (this.storage.key(i).indexOf(this.nameSpeace) != -1) {
-                    this.remove(this.storage.key(i));
-                }
-            }
+            this.storage.clear();
         };
 
 
@@ -55,9 +50,9 @@
             var length = this.storage.length;
             var allData = [];
             for (var i = 0; i < length; i++) {
-                if (this.storage.key(i).indexOf(this.nameSpeace) != -1) {
+                if (this.storage.key(i) && this.storage.key(i).indexOf(this.nameSpeace) != -1) {
                     var dataCache = this.storage.getItem(this.storage.key(i));
-                    var data = {key:this.storage.key(i).replace(this.nameSpeace,""),value:this.dataReduction(dataCache).val};
+                    var data = {key: this.storage.key(i).replace(this.nameSpeace, ""), value: this.dataReduction(dataCache).val};
                     allData.push(data);
                 }
             }
