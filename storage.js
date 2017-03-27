@@ -25,7 +25,7 @@
         };
 
         store.prototype.length =function(){
-            return this.getAll().length;
+            return getAllKey(this.nameSpeace).length;
         };
 
         store.prototype.getAll = function () {                          //获取所有数据

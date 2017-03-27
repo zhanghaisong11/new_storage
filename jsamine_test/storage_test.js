@@ -65,16 +65,9 @@ describe("测试storage", function () {
         expect(tsetStorage.length()).toBe(10);
     });
 
-//    it("测试获取所有数据", function () {
-//        tsetStorage.clear();
-//        tsetStorage.set("data_first","test_first");
-//        tsetStorage.set("data_second","test_second");
-//        var data = [
-//            { key: 'data_first', value: 'test_first'},
-//            { key: 'data_second', value:  "test_second"},
-//        ];
-//        expect(tsetStorage.getAll()).toBe(data);
-//    });
+    it("测试获取所有数据", function () {
+        expect(typeof tsetStorage.getAll()).toBe('object');
+    });
 
 
     describe("测试超时", function() {
