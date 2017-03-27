@@ -24,6 +24,10 @@
             this.storage.clear();
         };
 
+        store.prototype.length =function(){
+            return this.getAll().length;
+        };
+
         store.prototype.getAll = function () {                          //获取所有数据
             var keys = getAllKey(this.nameSpeace);
             var allData = [];

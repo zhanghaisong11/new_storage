@@ -48,4 +48,8 @@ storage.get('user');
 storage.getAll();
 //->[{key:"username",value:"zhang"},{key:user,value:{ name: 'zhang', likes: 'javascript' }}....]
 
+//获取storage存储所有数据的length
+storage.length();
+
+
 ```

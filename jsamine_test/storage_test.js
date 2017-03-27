@@ -51,7 +51,7 @@ describe("测试storage", function () {
     });
 
     it("测试过期之前", function () {
-        tsetStorage.set("fildeTestTimeout", 'timeout', 3000);
+        tsetStorage.set("fildeTestTimeout", 'timeout', 2000);
         expect(tsetStorage.get("fildeTestTimeout")).toBe("timeout");
     });
 
@@ -61,15 +61,29 @@ describe("测试storage", function () {
         expect(notHaveExpDataInfo.get("fildeTestNotTimeout")).toBe("notTimeout");
     });
 
+    it("测试获取localstorage的length", function () {
+        expect(tsetStorage.length()).toBe(10);
+    });
+
+//    it("测试获取所有数据", function () {
+//        tsetStorage.clear();
+//        tsetStorage.set("data_first","test_first");
+//        tsetStorage.set("data_second","test_second");
+//        var data = [
+//            { key: 'data_first', value: 'test_first'},
+//            { key: 'data_second', value:  "test_second"},
+//        ];
+//        expect(tsetStorage.getAll()).toBe(data);
+//    });
+
 
     describe("测试超时", function() {
         beforeEach(function() {
             jasmine.DEFAULT_TIMEOUT_INTERVAL = 6000;
         });
-        it("测试无超时数据", function(done) {
+        it("测试超时", function(done) {
             setTimeout(function() {
-                var notHaveExpDataInfo = new Storage("notHaveExpDataInfo");
-                expect(notHaveExpDataInfo.get("fildeTestTimeout")).toBe(null);
+                expect(tsetStorage.get("fildeTestTimeout")).toBe(null);
                 done();
             }, 5000);
         });
