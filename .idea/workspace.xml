@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f84fcbc0-ecbb-4f1c-b4f6-8e76e18b0e72" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage.js" afterPath="$PROJECT_DIR$/storage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="new-storage.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,7 +37,7 @@
       <file leaf-file-name="storage.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/storage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.026946107" vertical-offset="0" max-vertical-offset="1656">
+            <state vertical-scroll-proportion="-1.4520959" vertical-offset="988" max-vertical-offset="1656">
               <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
               <folding />
             </state>
@@ -413,7 +412,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/storage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.026946107" vertical-offset="0" max-vertical-offset="1656">
+        <state vertical-scroll-proportion="-1.4520959" vertical-offset="988" max-vertical-offset="1656">
           <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
           <folding />
         </state>
