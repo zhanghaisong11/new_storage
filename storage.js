@@ -1,6 +1,7 @@
 (function (window, store) {
-    if (window.localStorage) {     //检测localStorage 是否存在。
-
+    if (!window.localStorage) {     //检测localStorage 是否存在。
+        throw 'The browser does not support localStorage';
+    }
         store.prototype.storage = window.localStorage;
 
         store.prototype.set = function (key, val, exp) {             //存储数据
@@ -32,8 +33,7 @@
             var keys = getAllKey(this.nameSpeace);
             var allData = [];
             for (var i = 0; i < keys.length; i++) {
-                var data = {key: keys[i], value: this.get(keys[i])};
-                allData.push(data);
+                allData.push({key: keys[i], value: this.get(keys[i])});
             }
             return allData;
         };
@@ -70,9 +70,6 @@
             return info.val
         }
 
-    } else {
-        throw 'The browser does not support local storage';
-    }
 })(window, Storage);
 
 function Storage() {
