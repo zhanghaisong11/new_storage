@@ -1,6 +1,6 @@
 (function (window, store) {
     if (!window.localStorage) {     //检测localStorage 是否存在。
-        throw 'The browser does not support localStorage';
+        throw 'storage.js error : The browser does not support localStorage';
     }
     store.prototype.storage = window.localStorage;
 
