@@ -9,7 +9,11 @@
 #本地存储API调用示例
 
 ```js
+
 var storage = new Storage();
+
+var storage = new Storage('user');
+//创建命名空间
 
 // 存储 'username' 的值为 'zhang'
 storage.set('username', 'zhang');

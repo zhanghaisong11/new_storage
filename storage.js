@@ -2,15 +2,16 @@
     if (!window.localStorage) {     //检测localStorage 是否存在。
         throw 'storage.js error : The browser does not support localStorage';
     }
-    store.prototype.storage = window.localStorage;
 
     store.prototype.set = function (key, val, exp) {             //存储数据
+        checkKeyExist(key, 'set');
         var valInfo = initData(val, exp);
-        this.storage.setItem(this.nameSpeace + key, valInfo);
+        window.localStorage.setItem(this.nameSpeace + key, valInfo);
     };
 
-    store.prototype.get = function (key) {                       //获取数据
-        var infoCache = this.storage.getItem(this.nameSpeace + key);
+    store.prototype.get = function (key) {    //获取数据
+        checkKeyExist(key, 'get');
+        var infoCache = window.localStorage.getItem(this.nameSpeace + key);
         if (!infoCache) {
             return null;
         }
@@ -18,11 +19,15 @@
     };
 
     store.prototype.remove = function (key) {                    //删除数据
-        this.storage.removeItem(this.nameSpeace + key);
+        window.localStorage.removeItem(this.nameSpeace + key);
     };
 
     store.prototype.clear = function () {
-        this.storage.clear();
+        var nameSpeace = this.nameSpeace;
+        var keys = getAllKey(this.nameSpeace);
+        keys.forEach(function (key) {
+            window.localStorage.removeItem(nameSpeace + key);
+        })
     };
 
     store.prototype.length = function () {
@@ -42,7 +47,7 @@
         var allKeys = [];
         for (var i = 0; i < window.localStorage.length; i++) {
             var key = window.localStorage.key(i);
-            if (key.indexOf(namespace) != -1) {
+            if (key.indexOf(namespace) > -1) {
                 allKeys.push(key.replace(namespace, ""));
             }
         }
@@ -56,6 +61,7 @@
     function initData(val, exp) {            //处理数据，转为json
         var dataInfo = {val: val};
         if (exp) {
+            checkExpType(exp);
             dataInfo = {val: val, exp: exp, time: new Date().getTime()};
         }
         return JSON.stringify(dataInfo);
@@ -70,10 +76,23 @@
         return info.val
     }
 
+    function checkKeyExist(key, type) {
+        if (!key) {
+            throw type + ' error : the key is undefind';
+        }
+    }
+
+    function checkExpType(exp) {
+        var type = Object.prototype.toString.call(exp).toString();
+        if (type.indexOf('Number') < 0) {
+            throw 'type error : the exp is not number';
+        }
+    }
+
 })(window, Storage);
 
-function Storage() {
-    this.nameSpeace = "__storage__";
+function Storage(nameSpeace) {
+    this.nameSpeace = nameSpeace ? '__' + nameSpeace + '__' : '__storage__';
 }
 
 
