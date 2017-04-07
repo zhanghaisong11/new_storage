@@ -24,7 +24,7 @@
 
     store.prototype.clear = function () {
         var nameSpaces = this.nameSpaces;
-        var keys = getAllKey(this.nameSpaces);
+        var keys = getAllKey(nameSpaces);
         keys.forEach(function (key) {
             window.localStorage.removeItem(nameSpaces + key);
         })
