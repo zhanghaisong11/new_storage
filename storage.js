@@ -23,11 +23,8 @@
     };
 
     store.prototype.clear = function () {
-        var nameSpaces = this.nameSpaces;
-        var keys = getAllKey(nameSpaces);
-        keys.forEach(function (key) {
-            window.localStorage.removeItem(nameSpaces + key);
-        })
+        var keys = getAllKey(this.nameSpaces);
+        removeNameSpacesAllData(keys, this.nameSpaces)
     };
 
     store.prototype.length = function () {
@@ -71,9 +68,9 @@
         var info = dataReduction(infoCache);
         if (info.exp && new Date().getTime() - info.time > info.exp) {
             window.localStorage.removeItem(key);
-            return null ;
+            return null;
         }
-        return info.val ;
+        return info.val;
     }
 
     function checkKeyExist(key, type) {
@@ -87,6 +84,12 @@
         if (type.indexOf('Number') < 0) {
             throw 'type error : the exp is not number';
         }
+    }
+
+    function removeNameSpacesAllData(keys, nameSpaces) {
+        keys.forEach(function (key) {
+            window.localStorage.removeItem(nameSpaces + key);
+        });
     }
 
 })(window, Storage);
