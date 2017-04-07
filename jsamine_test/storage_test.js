@@ -62,7 +62,7 @@ describe("测试storage", function () {
     });
 
     it("测试获取localstorage的length", function () {
-        expect(tsetStorage.length()).toBe(10);
+        expect(tsetStorage.length()).toBe(9);
     });
 
     it("测试获取所有数据", function () {
@@ -87,6 +87,12 @@ describe("测试storage", function () {
                 expect(notHaveExpDataInfo.get("fildeTestNotTimeout")).toBe("notTimeout");
                 done();
             }, 5000);
+        });
+
+
+        it("测试clear", function () {
+            tsetStorage.clear();
+            expect(typeof tsetStorage.getAll()).toBe('object');
         });
     });
 

@@ -15,7 +15,7 @@
         if (!infoCache) {
             return null;
         }
-        return checkExpired(infoCache, key);
+        return checkExpired(infoCache, this.nameSpeace + key);
     };
 
     store.prototype.remove = function (key) {                    //删除数据
@@ -70,10 +70,10 @@
     function checkExpired(infoCache, key) {        //检查过期数据
         var info = dataReduction(infoCache);
         if (info.exp && new Date().getTime() - info.time > info.exp) {
-            store.prototype.remove(key);
-            return null;
+            window.localStorage.removeItem(key);
+            return null ;
         }
-        return info.val
+        return info.val ;
     }
 
     function checkKeyExist(key, type) {
