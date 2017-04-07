@@ -6,36 +6,36 @@
     store.prototype.set = function (key, val, exp) {             //存储数据
         checkKeyExist(key, 'set');
         var valInfo = initData(val, exp);
-        window.localStorage.setItem(this.nameSpeace + key, valInfo);
+        window.localStorage.setItem(this.nameSpaces + key, valInfo);
     };
 
     store.prototype.get = function (key) {    //获取数据
         checkKeyExist(key, 'get');
-        var infoCache = window.localStorage.getItem(this.nameSpeace + key);
+        var infoCache = window.localStorage.getItem(this.nameSpaces + key);
         if (!infoCache) {
             return null;
         }
-        return checkExpired(infoCache, this.nameSpeace + key);
+        return checkExpired(infoCache, this.nameSpaces + key);
     };
 
     store.prototype.remove = function (key) {                    //删除数据
-        window.localStorage.removeItem(this.nameSpeace + key);
+        window.localStorage.removeItem(this.nameSpaces + key);
     };
 
     store.prototype.clear = function () {
-        var nameSpeace = this.nameSpeace;
-        var keys = getAllKey(this.nameSpeace);
+        var nameSpaces = this.nameSpaces;
+        var keys = getAllKey(this.nameSpaces);
         keys.forEach(function (key) {
-            window.localStorage.removeItem(nameSpeace + key);
+            window.localStorage.removeItem(nameSpaces + key);
         })
     };
 
     store.prototype.length = function () {
-        return getAllKey(this.nameSpeace).length;
+        return getAllKey(this.nameSpaces).length;
     };
 
     store.prototype.getAll = function () {                          //获取所有数据
-        var keys = getAllKey(this.nameSpeace);
+        var keys = getAllKey(this.nameSpaces);
         var allData = [];
         for (var i = 0; i < keys.length; i++) {
             allData.push({key: keys[i], value: this.get(keys[i])});
@@ -91,8 +91,8 @@
 
 })(window, Storage);
 
-function Storage(nameSpeace) {
-    this.nameSpeace = nameSpeace ? '__' + nameSpeace + '__' : '__storage__';
+function Storage(nameSpaces) {
+    this.nameSpaces = nameSpaces ? '__' + nameSpaces + '__' : '__storage__';
 }
 
 

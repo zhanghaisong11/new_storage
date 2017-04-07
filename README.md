@@ -10,10 +10,11 @@
 
 ```js
 
-var storage = new Storage();
-
-var storage = new Storage('user');
 //创建命名空间
+var storage = new Storage('user');
+
+//不传入参数创建命名空间，默认为__storage__
+var storage = new Storage();
 
 // 存储 'username' 的值为 'zhang'
 storage.set('username', 'zhang');
@@ -38,7 +39,7 @@ setTimeout(function() {
 // 移除 'username' 字段
 storage.remove('username');
 
-// 清除所有本地存储
+// 清除所有该命名空间的本地存储
 storage.clear();
 
 // 存储对象
